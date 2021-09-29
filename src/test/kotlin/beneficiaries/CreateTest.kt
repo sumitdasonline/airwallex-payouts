@@ -1,0 +1,4 @@
+package beneficiaries
+
+class CreateTest {
+}
