@@ -123,7 +123,8 @@ enum class PaymentMethods {
 enum class Status(val code: Int, val message: String) {
     CREATED(201, "HTTP/1.1 201 Created"),
     BAD_REQUEST(400, "HTTP/1.1 400 Bad Request"),
-    UNAUTHORISED(401, "HTTP/1.1 401 Unauthorized")
+    UNAUTHORISED(401, "HTTP/1.1 401 Unauthorized"),
+    UNSUPPORTED(415,"HTTP/1.1 415 Unsupported Media Type")
 }
 
 /**

@@ -5,6 +5,7 @@ import helpers.KeyToRemoveArgument
 import helpers.PaymentMethods
 import helpers.Status
 import helpers.deleteKeyFromJson
+import helpers.getToken
 import helpers.putValueIntoJsonKey
 import io.restassured.module.jsv.JsonSchemaValidator
 import io.restassured.module.kotlin.extensions.Given
@@ -182,7 +183,7 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
     }
 
     @Test
-    fun unhappyFlowError401() {
+    fun unhappyFlowErrorInvalidAuthentication() {
         Given {
             body(CreateBeneficiariesHappyFlowPayload)
             header("Content-Type", "application/json")
@@ -196,6 +197,40 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
             and()
             body("code", equalTo("unauthorized"))
             body("message", equalTo("Access denied, authentication failed"))
+        }
+    }
+
+    @Test
+    fun unhappyFlowErrorNoAuthentication() {
+        Given {
+            body(CreateBeneficiariesHappyFlowPayload)
+            header("Content-Type", "application/json")
+        } When {
+            post(endpoint)
+        } Then {
+            assertThat()
+            statusCode(Status.UNAUTHORISED.code)
+            statusLine(Status.UNAUTHORISED.message)
+            and()
+            body("code", equalTo("unauthorized"))
+            body("message", equalTo("Access denied, authentication failed"))
+        }
+    }
+
+    @Test
+    fun unhappyFlowErrorNoContentType() {
+        Given {
+            body(CreateBeneficiariesHappyFlowPayload)
+            header("Authorization", "Bearer ${getToken()}")
+        } When {
+            post(endpoint)
+        } Then {
+            assertThat()
+            statusCode(Status.UNSUPPORTED.code)
+            statusLine(Status.UNSUPPORTED.message)
+            and()
+            body("code", equalTo("unsupported_media_type"))
+            body("message", equalTo("Content type 'text/plain;charset=ISO-8859-1' not supported"))
         }
     }
 

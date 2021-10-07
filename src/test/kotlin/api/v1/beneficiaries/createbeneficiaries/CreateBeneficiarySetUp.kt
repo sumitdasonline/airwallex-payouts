@@ -65,53 +65,21 @@ abstract class CreateBeneficiarySetUp {
 
         @JvmStatic
         fun removeMandatoryFieldsBankDetails() = listOf(
-            KeyToRemoveArgument(
-                "Account Currency",
-                "beneficiary.bank_details.account_currency",
-                ErrorResponse("field_required", "must not be null", "beneficiary.bank_details.account_currency")
-            ),
-            KeyToRemoveArgument(
-                "Account Name",
-                "beneficiary.bank_details.account_name",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.account_name"
-                )
-            ),
-            KeyToRemoveArgument(
-                "Account Number",
-                "beneficiary.bank_details.account_number",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.account_number"
-                )
-            ),
-            KeyToRemoveArgument(
-                "Bank Country Code",
-                "beneficiary.bank_details.bank_country_code",
-                ErrorResponse("field_required", "must not be null", "beneficiary.bank_details.bank_country_code")
-            ),
-            KeyToRemoveArgument(
-                "Bank Name",
-                "beneficiary.bank_details.bank_name",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.bank_name"
-                )
-            ),
-            KeyToRemoveArgument(
-                "Swift Code",
-                "beneficiary.bank_details.swift_code",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.swift_code"
-                )
-            ),
-        )
+            KeyToRemoveArgument("Account Currency", "beneficiary.bank_details.account_currency",
+                ErrorResponse("field_required", "must not be null", "beneficiary.bank_details.account_currency")),
+            KeyToRemoveArgument("Account Name", "beneficiary.bank_details.account_name",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.account_name")),
+            KeyToRemoveArgument("Account Number","beneficiary.bank_details.account_number",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.account_number")),
+            KeyToRemoveArgument("Bank Country Code", "beneficiary.bank_details.bank_country_code",
+                ErrorResponse("field_required", "must not be null", "beneficiary.bank_details.bank_country_code")),
+            KeyToRemoveArgument("Bank Name", "beneficiary.bank_details.bank_name",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.bank_name")),
+            KeyToRemoveArgument("Swift Code", "beneficiary.bank_details.swift_code",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.swift_code")),
+            KeyToRemoveArgument("Bank details", "beneficiary.bank_details",
+                ErrorResponse("field_required", "must not be null", "beneficiary.bank_details")),
+            )
 
         @JvmStatic
         fun blankValuesInMandatoryFieldsBankDetails() = listOf(
@@ -121,50 +89,29 @@ abstract class CreateBeneficiarySetUp {
             KeyToRemoveArgument("Account Routing Type 2", "beneficiary.bank_details.account_routing_type2",
                 ErrorResponse("invalid_argument"," is not a valid type","beneficiary.bank_details.account_routing_type2")
             ),
-            KeyToRemoveArgument(
-                "Account Currency",
-                "beneficiary.bank_details.account_currency",
+            KeyToRemoveArgument("Account Currency", "beneficiary.bank_details.account_currency",
                 ErrorResponse("invalid_argument", "beneficiary.bank_details.account_currency is not of the expected type; please refer to our API documentation", "beneficiary.bank_details.account_currency")
             ),
-            KeyToRemoveArgument(
-                "Account Name",
-                "beneficiary.bank_details.account_name",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.account_name"
+            KeyToRemoveArgument("Account Name", "beneficiary.bank_details.account_name",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.account_name")
+            ),
+            KeyToRemoveArgument("Account Number", "beneficiary.bank_details.account_number",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.account_number"
                 )
             ),
-            KeyToRemoveArgument(
-                "Account Number",
-                "beneficiary.bank_details.account_number",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.account_number"
-                )
-            ),
-            KeyToRemoveArgument(
-                "Bank Country Code",
-                "beneficiary.bank_details.bank_country_code",
+            KeyToRemoveArgument("Bank Country Code", "beneficiary.bank_details.bank_country_code",
                 ErrorResponse("invalid_argument", " is not a valid type", "beneficiary.bank_details.bank_country_code")
             ),
-            KeyToRemoveArgument(
-                "Bank Name",
-                "beneficiary.bank_details.bank_name",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.bank_name"
+            KeyToRemoveArgument("Bank Name", "beneficiary.bank_details.bank_name",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.bank_name"
                 )
             ),
-            KeyToRemoveArgument(
-                "Swift Code",
-                "beneficiary.bank_details.swift_code",
-                ErrorResponse(
-                    "payment_schema_validation_failed",
-                    "This field is required",
-                    "beneficiary.bank_details.swift_code"
+            KeyToRemoveArgument("Swift Code", "beneficiary.bank_details.swift_code",
+                ErrorResponse("payment_schema_validation_failed", "This field is required", "beneficiary.bank_details.swift_code"
+                )
+            ),
+            KeyToRemoveArgument("Bank Details", "beneficiary.bank_details",
+                ErrorResponse("invalid_argument", "beneficiary.bank_details is not of the expected type; please refer to our API documentation", "beneficiary.bank_details"
                 )
             ),
         )
@@ -186,16 +133,8 @@ abstract class CreateBeneficiarySetUp {
 
         @JvmStatic
         fun accountNumberInvalidForUS() = listOf(
-            Arguments.of(
-                "Account number with 18 char",
-                getRandomString(18),
-                "Length of account_number should be between 1 and 17 when bank_country_code is 'US'"
-            ),
-            Arguments.of(
-                "Account number with 35 char",
-                getRandomString(35),
-                "Length of account_number should be between 1 and 17 when bank_country_code is 'US'"
-            ),
+            Arguments.of("Account number with 18 char", getRandomString(18), "Length of account_number should be between 1 and 17 when bank_country_code is 'US'"),
+            Arguments.of("Account number with 35 char", getRandomString(35), "Length of account_number should be between 1 and 17 when bank_country_code is 'US'"),
             Arguments.of("Account number with special char", "!@$%^^^&&", "Should contain alphanumeric characters only")
         )
 
