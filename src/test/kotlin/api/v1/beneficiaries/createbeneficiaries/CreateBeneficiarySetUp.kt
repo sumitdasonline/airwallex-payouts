@@ -18,13 +18,7 @@ import org.junit.jupiter.params.provider.Arguments
 import java.io.File
 import java.io.StringReader
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 abstract class CreateBeneficiarySetUp {
-
-    @BeforeAll
-    fun setUp() {
-        headers = createBeneficiaryHeaders(getToken())
-    }
 
     companion object {
         private val baseURL: String = readProperties().getProperty("baseURL")
@@ -39,7 +33,7 @@ abstract class CreateBeneficiarySetUp {
         val CreateBeneficiariesHappyFlowPayload =
             File("$payloads/CreateBeneficiariesHappyFlow.json").readText()
         val createBeneficiariesRequest = Klaxon().parse<CreateBeneficiaries>(StringReader(CreateBeneficiariesFullPayload))
-        lateinit var headers: Headers
+        var headers = createBeneficiaryHeaders(getToken())
 
         @JvmStatic
         fun removeNonMandatoryFieldsBankDetails() = listOf(

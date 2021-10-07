@@ -20,11 +20,10 @@ class BankCountryCodeTest : CreateBeneficiarySetUp() {
     @ParameterizedTest
     @EnumSource(BankCountryCode::class)
     fun bankCountryCodeWIthValidValues201(bankCountryCode: BankCountryCode) {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.bank_country_code",
-            bankCountryCode.toString()
-        ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", bankCountryCode.toString()).toString()
             .putValueIntoJsonKey("beneficiary.bank_details.swift_code", bankCountryCode.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -39,14 +38,10 @@ class BankCountryCodeTest : CreateBeneficiarySetUp() {
 
     @Test
     fun bankCountryCodeSwiftCodeMismatch() {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.bank_country_code",
-            BankCountryCode.AU.toString()
-        ).toString()
-            .putValueIntoJsonKey(
-                "beneficiary.bank_details.swift_code",
-                BankCountryCode.CN.swiftCode.toString()
-            ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.AU.toString()).toString()
+            .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.CN.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -65,9 +60,10 @@ class BankCountryCodeTest : CreateBeneficiarySetUp() {
     @Test
     fun bankCountryCodeNotOnList() {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", "XX")
-                .toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", "XX").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.swift_code", "ICBKXXBJ").toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)

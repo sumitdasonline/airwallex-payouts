@@ -19,8 +19,9 @@ class BankNameTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun invalidBankName(testName: String, bankName: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.bank_name", bankName)
-                .toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_name", bankName).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -40,8 +41,9 @@ class BankNameTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun validBankName(testName: String, bankName: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.bank_name", bankName)
-                .toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_name", bankName).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)

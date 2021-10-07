@@ -25,6 +25,7 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun removeNonMandatoryFieldsBankDetails(argument: KeyToRemoveArgument) {
         val modifiedPayload = CreateBeneficiariesFullPayload.deleteKeyFromJson(argument.jsonPathToRemove).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -42,6 +43,7 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
     fun blankValuesInNonMandatoryFieldsBankDetails(argument: KeyToRemoveArgument) {
         val modifiedPayload =
             CreateBeneficiariesFullPayload.putValueIntoJsonKey(argument.jsonPathToRemove, "").toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -58,6 +60,7 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun removeMandatoryFieldsBankDetails(argument: KeyToRemoveArgument) {
         val modifiedPayload = CreateBeneficiariesFullPayload.deleteKeyFromJson(argument.jsonPathToRemove).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -79,6 +82,7 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
     fun blankValuesInMandatoryFieldsBankDetails(argument: KeyToRemoveArgument) {
         val modifiedPayload =
             CreateBeneficiariesFullPayload.putValueIntoJsonKey(argument.jsonPathToRemove, "").toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -97,7 +101,7 @@ class CreateBeneficiaryTest : CreateBeneficiarySetUp() {
 
     @Test
     fun happyFlowFullPayload() {
-        val a = Given {
+        Given {
             body(CreateBeneficiariesFullPayload)
             headers(headers)
         } When {

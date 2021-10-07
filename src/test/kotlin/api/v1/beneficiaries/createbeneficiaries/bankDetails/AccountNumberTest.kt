@@ -20,16 +20,11 @@ class AccountNumberTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun accountNumberInvalidForUS(testName: String, accountNumber: String, errorMessage: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber)
-                .toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.bank_country_code",
-                    BankCountryCode.US.toString()
-                ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.US.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.US.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -49,16 +44,11 @@ class AccountNumberTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun accountNumberValidForUS(testName: String, accountNumber: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber)
-                .toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.bank_country_code",
-                    BankCountryCode.US.toString()
-                ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.US.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.US.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -75,16 +65,11 @@ class AccountNumberTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun accountNumberInvalidForAU(testName: String, accountNumber: String, errorMessage: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber)
-                .toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.bank_country_code",
-                    BankCountryCode.AU.toString()
-                ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.AU.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.AU.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.AU.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -104,16 +89,11 @@ class AccountNumberTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun accountNumberValidForAU(testName: String, accountNumber: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber)
-                .toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.bank_country_code",
-                    BankCountryCode.AU.toString()
-                ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.AU.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.AU.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.AU.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -130,16 +110,11 @@ class AccountNumberTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun accountNumberInvalidForCN(testName: String, accountNumber: String, errorMessage: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber)
-                .toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.bank_country_code",
-                    BankCountryCode.CN.toString()
-                ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.CN.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.CN.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.CN.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -159,16 +134,11 @@ class AccountNumberTest : CreateBeneficiarySetUp() {
     @MethodSource
     fun accountNumberValidForCN(testName: String, accountNumber: String) {
         val modifiedPayload =
-            CreateBeneficiariesFullPayload.putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber)
-                .toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.bank_country_code",
-                    BankCountryCode.CN.toString()
-                ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.CN.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesFullPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.account_number", accountNumber).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.CN.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.CN.swiftCode.toString()).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)

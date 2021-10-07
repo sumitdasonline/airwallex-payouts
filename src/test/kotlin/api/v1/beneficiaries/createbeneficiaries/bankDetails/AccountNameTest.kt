@@ -22,6 +22,7 @@ class AccountNameTest : CreateBeneficiarySetUp() {
             "beneficiary.bank_details.account_name",
             accountName
         ).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -44,6 +45,7 @@ class AccountNameTest : CreateBeneficiarySetUp() {
             "beneficiary.bank_details.account_name",
             accountName
         ).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)

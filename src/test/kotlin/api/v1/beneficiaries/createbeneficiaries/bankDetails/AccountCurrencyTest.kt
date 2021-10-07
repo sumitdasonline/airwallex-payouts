@@ -24,6 +24,7 @@ class AccountCurrencyTest : CreateBeneficiarySetUp() {
             "beneficiary.bank_details.account_currency",
             accountCurrency.toString()
         ).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
@@ -43,6 +44,7 @@ class AccountCurrencyTest : CreateBeneficiarySetUp() {
             "beneficiary.bank_details.account_currency",
             accountCurrency
         ).toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)

@@ -21,10 +21,8 @@ class SwiftCodeTest : CreateBeneficiarySetUp() {
     @Test
     fun swiftCodeBlankWhenPaymentMethodIsLocal() {
         val modifiedPayload = JSONObject(
-            CreateBeneficiariesHappyFlowPayload.putValueIntoJsonKey(
-                "beneficiary.bank_details.bank_country_code",
-                BankCountryCode.US.toString()
-            ).toString()
+            CreateBeneficiariesHappyFlowPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.swift_code", "").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_type1", "aba").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_value1", "021000021").toString()
@@ -46,14 +44,9 @@ class SwiftCodeTest : CreateBeneficiarySetUp() {
     @Test
     fun swiftCodeValidWhenPaymentMethodIsLocal() {
         val modifiedPayload = JSONObject(
-            CreateBeneficiariesHappyFlowPayload.putValueIntoJsonKey(
-                "beneficiary.bank_details.bank_country_code",
-                BankCountryCode.US.toString()
-            ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.US.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesHappyFlowPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.US.swiftCode.toString()).toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_type1", "aba").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_value1", "021000021").toString()
         )
@@ -74,14 +67,9 @@ class SwiftCodeTest : CreateBeneficiarySetUp() {
     @Test
     fun swiftCodeInvalidWhenPaymentMethodIsLocal() {
         val modifiedPayload = JSONObject(
-            CreateBeneficiariesHappyFlowPayload.putValueIntoJsonKey(
-                "beneficiary.bank_details.bank_country_code",
-                BankCountryCode.US.toString()
-            ).toString()
-                .putValueIntoJsonKey(
-                    "beneficiary.bank_details.swift_code",
-                    BankCountryCode.CN.swiftCode.toString()
-                ).toString()
+            CreateBeneficiariesHappyFlowPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
+                .putValueIntoJsonKey("beneficiary.bank_details.swift_code", BankCountryCode.CN.swiftCode.toString()).toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_type1", "aba").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_value1", "021000021").toString()
         )
@@ -106,10 +94,8 @@ class SwiftCodeTest : CreateBeneficiarySetUp() {
     @Test
     fun swiftCodeRemovedWhenPaymentMethodIsLocal() {
         val modifiedPayload = JSONObject(
-            CreateBeneficiariesHappyFlowPayload.putValueIntoJsonKey(
-                "beneficiary.bank_details.bank_country_code",
-                BankCountryCode.US.toString()
-            ).toString()
+            CreateBeneficiariesHappyFlowPayload
+                .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
                 .deleteKeyFromJson("beneficiary.bank_details.swift_code").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_type1", "aba").toString()
                 .putValueIntoJsonKey("beneficiary.bank_details.account_routing_value1", "021000021").toString()
@@ -130,11 +116,10 @@ class SwiftCodeTest : CreateBeneficiarySetUp() {
 
     @Test
     fun invalidSwiftCode() {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.bank_country_code",
-            BankCountryCode.US.toString()
-        ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.bank_country_code", BankCountryCode.US.toString()).toString()
             .putValueIntoJsonKey("beneficiary.bank_details.swift_code", "ICBKUSBJE").toString()
+
         Given {
             body(modifiedPayload)
             headers(headers)
