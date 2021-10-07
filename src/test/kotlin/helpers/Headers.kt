@@ -3,6 +3,11 @@ package helpers
 import io.restassured.http.Header
 import io.restassured.http.Headers
 
+/**
+ * Create authentication headers
+ * Authentication header required to create Authentication Token
+ * @return Headers
+ */
 fun createAuthenticationHeaders() = Headers(
     listOf(
         Header("Content-Type", "application/json"),
@@ -11,6 +16,12 @@ fun createAuthenticationHeaders() = Headers(
     )
 )
 
+/**
+ * Create beneficiary headers
+ * Headers for Create Beneficiary Endpoint
+ * @param loginToken
+ * @return Headers
+ */
 fun createBeneficiaryHeaders(loginToken : String) = Headers(
     listOf(
         Header("Content-Type", "application/json"),
