@@ -49,5 +49,4 @@ This is testing a Demo API of Airwallex with which you can create new Beneficiar
 
 == What about the failed test?
 
-If there is a failed test, then it means Expectation != Actual, in that case, a bug needs to be raised to either fix the bug or to change the expectations, i.e. the requirements. Link to the bugs documentations are coming soon.
-
+If there is a failed test, then it means Expectation != Actual, in that case, a bug needs to be raised to either fix the bug or to change the expectations, i.e. the requirements. You can see the issues/bugs https://github.com/sumitdasonline/airwallex-payouts/issues[here].

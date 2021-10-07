@@ -18,10 +18,8 @@ class AccountNameTest : CreateBeneficiarySetUp() {
     @ParameterizedTest(name = "{index} - Name = {0}")
     @MethodSource
     fun accountNameInvalid(testName: String, accountName: String) {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.account_name",
-            accountName
-        ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.account_name", accountName).toString()
 
         Given {
             body(modifiedPayload)
@@ -41,10 +39,8 @@ class AccountNameTest : CreateBeneficiarySetUp() {
     @ParameterizedTest(name = "{index} - Account Name = {0}")
     @MethodSource
     fun accountNameValid(accountName: String) {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.account_name",
-            accountName
-        ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.account_name", accountName).toString()
 
         Given {
             body(modifiedPayload)

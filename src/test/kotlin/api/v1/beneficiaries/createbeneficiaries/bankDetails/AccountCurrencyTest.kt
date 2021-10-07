@@ -20,10 +20,8 @@ class AccountCurrencyTest : CreateBeneficiarySetUp() {
     @ParameterizedTest(name = "{index} - Currency = {0}")
     @EnumSource(AccountCurrency::class)
     fun accountCurrencyWithValidValues201(accountCurrency: AccountCurrency) {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.account_currency",
-            accountCurrency.toString()
-        ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.account_currency",accountCurrency.toString()).toString()
 
         Given {
             body(modifiedPayload)
@@ -40,10 +38,8 @@ class AccountCurrencyTest : CreateBeneficiarySetUp() {
     @ParameterizedTest(name = "{index} - Currency = {0}")
     @ValueSource(strings = ["abcd", "!@#$", "invalidValue", "123", ""])
     fun accountCurrencyWithInvalidValues(accountCurrency: String) {
-        val modifiedPayload = CreateBeneficiariesFullPayload.putValueIntoJsonKey(
-            "beneficiary.bank_details.account_currency",
-            accountCurrency
-        ).toString()
+        val modifiedPayload = CreateBeneficiariesFullPayload
+            .putValueIntoJsonKey("beneficiary.bank_details.account_currency", accountCurrency).toString()
 
         Given {
             body(modifiedPayload)
