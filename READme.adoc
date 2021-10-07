@@ -1,0 +1,52 @@
+= Airwallex Create Beneficiary API functional Testing
+Sumit Das <sumitdasonline@gmail.com>
+3.0, July 29, 2022: AsciiDoc article template
+:toc:
+:icons: font
+:url-quickref: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+
+This is testing a Demo API of Airwallex with which you can create new Beneficiary.
+
+== Steps to run tests
+
+* `mvn clean test` (Without html report)
+
+* Alternatively by running
+`mvn clean site` will create the following html `target/site/surefire-report.html`
+
+
+* To run it with different environment add the following : `-Denv = <_environment_>`
+** Currently it is configured as 'test' and that is used as default
+
+
+== Let's talk about the tests
+
+=== Scope
+* API testing is being done with only having Scope of the fields under *bank_details*. And additionally few fields are scoped out as the requirement was not clear. (Like the Routing number & values.)
+* Only functional tests for Bank_details are developed.
+* Tests are also based on the mandatory fields when `bank_country_code` is either of these 3: _US, CN, AU_
+
+=== Design
+* The test classes are in folder `src/test/kotlin/api/v1/beneficiaries/createbeneficiaries`
+* Test classes are divided further into Scope, which means `AccountCurrencyTest` only have functional test that is done with `beneficiary.bank_details.accountCurrency`
+* `CreateBeneficiaryTest` class contains common functional tests for all elements of Create Beneficiary request.
+* `CreateBeneficiarySetup` contains the setup of most of the test scenarios, which includes, static variables, Method arguments of Parameterized tests.
+** Method argument names are identical to easily find the test data, that means, if you're looking for Method Arguments of test name : `fun xyz()`, you will find it in `CreateBeneficiarySetup` as `fun xyz()`.
+* All the test classes includes Positive and Negative scenarios.
+* Tests are built to depict the simplest scenario as possible. But to avoid too much line of code _Parameterized test_ is used to test *similar outcome* from different Test data.
+
+=== Tech Stack
+
+* Maven
+* Junit5
+* RestAssured
+* Kotlin
+* Other Dependencies:
+** Klaxxon
+** Json
+** Hamcrest
+
+== What about the failed test?
+
+If there is a failed test, then it means Expectation != Actual, in that case, a bug needs to be raised to either fix the bug or to change the expectations, i.e. the requirements. Link to the bugs documentations are coming soon.
+
